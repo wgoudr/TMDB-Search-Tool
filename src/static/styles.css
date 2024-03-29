@@ -1,0 +1,29 @@
+html {
+    font-size: 1.25rem;
+}
+
+main {
+    margin:  1rem 1rem 1rem 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; 
+}
+
+.main_title {
+    font-size: 2rem;
+}
+
+.nice_list {
+    margin-top: 1.25rem;
+}
+
+.page_title {
+    margin-bottom: 2rem;
+    margin-bottom: 2rem;
+}
+
+.navbar {
+    background-color: beige;
+}
+

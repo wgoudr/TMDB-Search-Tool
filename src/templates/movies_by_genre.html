@@ -1,0 +1,56 @@
+{% extends "base.html" %} {% block content %}
+<div class="page_title"><h1>Find Movies by Genre</h1></div>
+<div
+  class="btn-group"
+  role="group"
+  aria-label="Button group with nested dropdown"
+>
+  <div class="btn-group" role="group" style="margin-bottom: 2rem">
+    <button
+      id="btnGroupDrop1"
+      type="button"
+      class="btn btn-secondary dropdown-toggle"
+      data-toggle="dropdown"
+      aria-haspopup="true"
+      aria-expanded="false"
+    >
+      Pick a Genre
+    </button>
+    <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+      {% for genre in genres%}
+      <a class="dropdown-item" href="/movies_by_genre/{{genre[0]}}"
+        >{{ genre[1] }}</a
+      >
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    {% for movie in movies %}
+    <div class="col-12 col-sm-6 col-md-4 mb-4">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title"><b>{{ movie[1] }}</b></h4>
+          <p class="card-text"><b>Release Date: </b>{{ movie[3] }}</p>
+          <p class="card-text">Rating: {{ movie[4] }}</p>
+          <form action="/bookmark/genre" method="post">
+            <button
+              name="movie_id"
+              value="{{ movie[0] }}"
+              type="submit"
+              style="font-size: x-small"
+              class="btn btn-outline-primary"
+            >
+              Bookmark
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "base.html" %} {% block content %}
+
+<div class="page_title"><h1>Find Movies by Their Release Date</h1></div>
+
+<div>
+  <div class="btn-group" role="group" aria-label="Basic example">
+    <button type="button" class="btn btn-outline-primary">
+      <a href="/movie_by_release/{{ 'Ascending' }}">Ascending</a>
+    </button>
+    <button type="button" class="btn btn-outline-primary">
+      <a href="/movie_by_release/{{ 'Descending' }}">Descending</a>
+    </button>
+  </div>
+</div>
+
+<div>
+  <ul class="list-group">
+    {% for movie in movies %}
+    <li class="list-group-item" style="display: flex; align-items: center">
+      <b>{{ movie[1] }}</b>, Release Date: {{ movie[3] }}, Rating: {{ movie[4]
+      }}
+      <form action="/bookmark/release" method="post">
+        <button
+          name="movie_id"
+          value="{{ movie[0] }}"
+          type="submit"
+          style="font-size: x-small; margin-left: 1rem"
+          class="btn btn-outline-primary"
+        >
+          Bookmark
+        </button>
+      </form>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+
+{% endblock %}

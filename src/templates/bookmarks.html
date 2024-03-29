@@ -1,0 +1,25 @@
+{% extends "base.html" %} {% block content %}
+
+<div class="page_title"><h1>Here Are Your Bookmarked Movies</h1></div>
+
+<div>
+  <ul class="list-group">
+    {% for movie in movies %}
+    <li class="list-group-item" style="display: flex; align-items: center">
+      <b>{{ movie[1] }}</b>, Rating: {{ movie[4] }}
+      <form action="/bookmark/delete" method="post">
+        <button
+          name="movie_id"
+          value="{{ movie[0] }}"
+          type="submit"
+          style="font-size: x-small; margin-left: 1rem"
+          class="btn btn-outline-primary"
+        >
+          Remove Bookmark
+        </button>
+      </form>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}

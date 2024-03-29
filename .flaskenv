@@ -1,0 +1,2 @@
+FLASK_ENV=developement
+FLASK_APP=src:create_app
